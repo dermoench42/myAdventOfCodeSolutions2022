@@ -1,0 +1,1 @@
+# myAdventOfCodeSolutions2022
