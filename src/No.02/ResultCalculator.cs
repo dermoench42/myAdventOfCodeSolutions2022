@@ -4,7 +4,9 @@ namespace No._2
 {
     public class ResultCalculator
     {
-        public int calc(string data, Dictionary<string, Chosen> opponentsChoices, Dictionary<string, Chosen> myChoices)
+        public static int calc(string data,
+                               Dictionary<string, Chosen> opponentsChoices,
+                               Dictionary<string, Chosen> myChoices)
         {
             string[] rows = data.Split("\n");
 
@@ -16,7 +18,9 @@ namespace No._2
             return result;
         }
 
-        public int calcpart2(string data, Dictionary<string, Chosen> opponentsChoices, Dictionary<string, WinState> wantedResultState)
+        public static int calcpart2(string data,
+                                    Dictionary<string, Chosen> opponentsChoices,
+                                    Dictionary<string, WinState> wantedResultState)
         {
             string[] rows = data.Split("\n");
 

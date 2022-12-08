@@ -9,10 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "No.01", "No.01\No.01.csproj
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projektmappenelemente", "Projektmappenelemente", "{9DB8AC48-D4EF-497F-B8C4-2C64FC3B381C}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "No.02_Tests", "No.02_Tests\No.02_Tests.csproj", "{B6FFBBAC-B192-4793-A6BE-B985AF8E38A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "No.02_Tests", "No.02_Tests\No.02_Tests.csproj", "{B6FFBBAC-B192-4793-A6BE-B985AF8E38A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

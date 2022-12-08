@@ -5,21 +5,21 @@ namespace No._02_Tests
     [TestClass]
     public class ResultCalculatorTest
     {
-        Dictionary<string, Chosen> opponentsChoices = new Dictionary<string, Chosen>()
+        readonly Dictionary<string, Chosen> opponentsChoices = new()
             {
                 { "A", Chosen.Rock },
                 { "B", Chosen.Paper },
                 { "C", Chosen.Scissor }
             };
 
-        Dictionary<string, Chosen> myChoices = new Dictionary<string, Chosen>()
+        readonly Dictionary<string, Chosen> myChoices = new()
             {
                 { "X", Chosen.Rock },
                 { "Y", Chosen.Paper },
                 { "Z", Chosen.Scissor }
             };
 
-        Dictionary<string, WinState> wantedResultState = new Dictionary<string, WinState>() {
+        readonly Dictionary<string, WinState> wantedResultState = new() {
                 { "X", WinState.loose },
                 { "Y", WinState.draw },
                 { "Z", WinState.win }
@@ -28,9 +28,7 @@ namespace No._02_Tests
         [TestMethod]
         public void returns_zero_onEmptyData()
         {
-            ResultCalculator calc = new();
-
-            int result = calc.calc("", opponentsChoices, myChoices);
+            int result = ResultCalculator.calc("", this.opponentsChoices, this.myChoices);
 
             Assert.AreEqual(0, result);
         }
@@ -41,9 +39,7 @@ namespace No._02_Tests
         [DataRow("C Z", 6)]
         public void returns_result_of_single_game(string data, int expected)
         {
-            ResultCalculator calc = new();
-
-            int result = calc.calc(data, opponentsChoices, myChoices);
+            int result = ResultCalculator.calc(data, this.opponentsChoices, this.myChoices);
 
             Assert.AreEqual(expected, result);
         }
@@ -54,9 +50,7 @@ namespace No._02_Tests
         [DataRow("C Z", 7)]
         public void part2_returns_result_of_single_game(string data, int expected)
         {
-            ResultCalculator calc = new();
-
-            int result = calc.calcpart2(data, opponentsChoices, wantedResultState);
+            int result = ResultCalculator.calcpart2(data, this.opponentsChoices, this.wantedResultState);
 
             Assert.AreEqual(expected, result);
         }
@@ -64,8 +58,6 @@ namespace No._02_Tests
         [TestMethod]
         public void return_exampleDataResult()
         {
-            ResultCalculator calc = new();
-
             string data = @"
                 A Y
                 B X
@@ -74,7 +66,7 @@ namespace No._02_Tests
 
             int expected = 15;
 
-            int result = calc.calc(data, opponentsChoices, myChoices);
+            int result = ResultCalculator.calc(data, this.opponentsChoices, this.myChoices);
 
             Assert.AreEqual(expected, result);
         }

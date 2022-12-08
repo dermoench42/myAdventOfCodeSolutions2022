@@ -18,16 +18,17 @@ namespace No._2
         {
             string[] parts = data.Trim().Split(" ");
             this.opponentChoice = opponentsChoices[parts[0]];
-            this.myChoice = this.choiceToFitResult(this.opponentChoice, wantedResultState[parts[1]]);
+            this.myChoice = choiceToFitResult(this.opponentChoice, wantedResultState[parts[1]]);
         }
 
-        private Chosen choiceToFitResult(Chosen opponentChoice, WinState winState)
+        private static Chosen choiceToFitResult(Chosen opponentChoice, WinState winState)
         {
             return winState switch
             {
                 WinState.draw => opponentChoice,
                 WinState.win => whichWinsAgainst(opponentChoice),
-                WinState.loose => whichLoosesAgainst(opponentChoice)
+                WinState.loose => whichLoosesAgainst(opponentChoice),
+                _ => throw new NotImplementedException()
             };
         }
 
@@ -37,7 +38,8 @@ namespace No._2
             {
                 Chosen.Scissor => Chosen.Paper,
                 Chosen.Paper => Chosen.Rock,
-                Chosen.Rock => Chosen.Scissor
+                Chosen.Rock => Chosen.Scissor,
+                _ => throw new NotImplementedException()
             };
         }
 
@@ -47,7 +49,8 @@ namespace No._2
             {
                 Chosen.Scissor => Chosen.Rock,
                 Chosen.Paper => Chosen.Scissor,
-                Chosen.Rock => Chosen.Paper
+                Chosen.Rock => Chosen.Paper,
+                _ => throw new NotImplementedException()
             };
         }
 
