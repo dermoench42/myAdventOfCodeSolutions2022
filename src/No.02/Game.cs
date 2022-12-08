@@ -27,7 +27,8 @@ namespace No._2
             {
                 WinState.draw => opponentChoice,
                 WinState.win => whichWinsAgainst(opponentChoice),
-                WinState.loose => whichLoosesAgainst(opponentChoice)
+                WinState.loose => whichLoosesAgainst(opponentChoice),
+                _ => throw new ArgumentOutOfRangeException(nameof(winState), winState, null)
             };
         }
 
@@ -37,7 +38,8 @@ namespace No._2
             {
                 Chosen.Scissor => Chosen.Paper,
                 Chosen.Paper => Chosen.Rock,
-                Chosen.Rock => Chosen.Scissor
+                Chosen.Rock => Chosen.Scissor,
+                _ => throw new ArgumentOutOfRangeException(nameof(opponentChoice), opponentChoice, null)
             };
         }
 
@@ -47,7 +49,8 @@ namespace No._2
             {
                 Chosen.Scissor => Chosen.Rock,
                 Chosen.Paper => Chosen.Scissor,
-                Chosen.Rock => Chosen.Paper
+                Chosen.Rock => Chosen.Paper,
+                _ => throw new ArgumentOutOfRangeException(nameof(opponentChoice), opponentChoice, null)
             };
         }
 
