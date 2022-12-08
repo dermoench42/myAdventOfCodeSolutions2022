@@ -34,7 +34,7 @@ namespace No._2
                 { "Z", WinState.win }
             };
 
-            Console.WriteLine($"result Part2: {calculator.calcpart2(data,opponentsChoices,wantedResultState)}");
+            Console.WriteLine($"result Part2: {calculator.calcpart2(data, opponentsChoices, wantedResultState)}");
         }
     }
 }
