@@ -26,37 +26,39 @@ namespace No._2
             return winState switch
             {
                 WinState.draw => opponentChoice,
-                WinState.win => opponentChoice switch
-                {
-                    Chosen.Scissor => Chosen.Rock,
-                    Chosen.Paper => Chosen.Scissor,
-                    Chosen.Rock => Chosen.Paper
-                },
-                WinState.loose => opponentChoice switch
-                {
-                    Chosen.Scissor => Chosen.Paper,
-                    Chosen.Paper => Chosen.Rock,
-                    Chosen.Rock => Chosen.Scissor
-                }
+                WinState.win => whichWinsAgainst(opponentChoice),
+                WinState.loose => whichLoosesAgainst(opponentChoice)
+            };
+        }
+
+        private static Chosen whichLoosesAgainst(Chosen opponentChoice)
+        {
+            return opponentChoice switch
+            {
+                Chosen.Scissor => Chosen.Paper,
+                Chosen.Paper => Chosen.Rock,
+                Chosen.Rock => Chosen.Scissor
+            };
+        }
+
+        private static Chosen whichWinsAgainst(Chosen opponentChoice)
+        {
+            return opponentChoice switch
+            {
+                Chosen.Scissor => Chosen.Rock,
+                Chosen.Paper => Chosen.Scissor,
+                Chosen.Rock => Chosen.Paper
             };
         }
 
         public int result()
-            => (int)this.myChoice + (int)this.didIWin();
+            => (int) this.myChoice + (int) this.didIWin();
 
         private WinState didIWin()
         {
-            if (this.opponentChoice == this.myChoice)
-                return WinState.draw;
-
-            else if (this.myChoice == Chosen.Rock && this.opponentChoice == Chosen.Scissor
-                || this.myChoice == Chosen.Scissor && this.opponentChoice == Chosen.Paper
-                || this.myChoice == Chosen.Paper && this.opponentChoice == Chosen.Rock)
-                return WinState.win;
-
-            else
-                return WinState.loose;
-
+            return this.opponentChoice == this.myChoice
+                ? WinState.draw
+                : (this.myChoice == whichWinsAgainst(this.opponentChoice)) ? WinState.win : WinState.loose;
         }
     }
 }
