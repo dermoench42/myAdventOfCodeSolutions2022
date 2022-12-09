@@ -16,4 +16,14 @@
         <PackageReference Include="coverlet.collector" Version="3.1.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\No.03\No.03.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="exampleContents.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
