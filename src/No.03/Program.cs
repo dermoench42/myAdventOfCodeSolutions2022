@@ -9,4 +9,8 @@ string data = File.ReadAllText("content.txt");
 
 int result = Calculator3.calc(data);
 
-Console.WriteLine($"result {result}");
+Console.WriteLine($"result: {result}");
+
+result = Calculator3Part2.calc(data);
+
+Console.WriteLine($"result Part2: {result}");

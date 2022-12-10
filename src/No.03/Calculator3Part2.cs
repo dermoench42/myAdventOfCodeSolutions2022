@@ -8,6 +8,7 @@ namespace No._03
     {
         public static int calc(string data)
             => new BadgeFinder(data.Split("\n")
+                .Where(line => !string.IsNullOrWhiteSpace(line))
                 .ToList()).calcPrio();
     }
 }

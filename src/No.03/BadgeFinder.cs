@@ -12,23 +12,34 @@ namespace No._03
 
         public BadgeFinder(List<string> content)
         {
-            int cntGroups = content.Count/3;
             if (content.Count % 3 > 0)
-                throw new InvalidOperationException("Count Lines error (mod 3)");
+                throw new InvalidOperationException($"Count Lines error (mod 3 => {content.Count % 3})");
 
-            int idxGroup = 0;
+            int idx = 0;
 
-            while (idxGroup < cntGroups)
+            while (idx < content.Count)
             {
-                //string badge = this.find(content.GetRange(idxGroup,3))
+                char found = '\0';
+                foreach (char item in content[idx].ToArray())
+                {
+                    if (found != '\0')
+                        break;
 
+                    if (!content[idx + 1].Contains(item)
+                        || !content[idx + 2].Contains(item)) continue;
+
+                    this.itemsFound.Add(item);
+                    found = item;
+                }
+
+                idx += 3;
             }
         }
 
         public int calcPrio()
             => this.itemsFound
                 .Sum(item => item >= 'a'
-                                    ? item - 'a' + 1
-                                    : item - 'A' + 27);
+                    ? item - 'a' + 1
+                    : item - 'A' + 27);
     }
 }

@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -30,6 +31,15 @@ namespace No._03_Tests
             }
 
             Assert.AreEqual(EXPECTED_SUM, sum);
+        }
+
+        [TestMethod]
+        public void groupTest()
+        {
+            BadgeFinder bf = new(this.testContent
+                .Where(line => !string.IsNullOrWhiteSpace(line))
+                .ToList());
+            Assert.AreEqual(70, bf.calcPrio());
         }
     }
 }
