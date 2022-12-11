@@ -10,12 +10,11 @@ namespace No._07
 {
     public class Calculator
     {
-        private Dir root = new(Path.DirectorySeparatorChar.ToString());
+        private readonly Dir root = new(Path.DirectorySeparatorChar.ToString());
 
         public Calculator(List<string> data)
         {
             Dir cwd = this.root;
-            Dir? dirDir = null;
             foreach (string row in data)
             {
                 if (row.StartsWith("$ "))
@@ -24,28 +23,20 @@ namespace No._07
                         .Where(item => !string.IsNullOrWhiteSpace(item))
                         .ToList();
 
-                    switch (cmdParts[1])
+                    switch (cmdParts[1].Trim())
                     {
                         case "cd":
-                            switch (cmdParts[2])
+                            cwd = cmdParts[2].Trim() switch
                             {
-                                case "/":
-                                    cwd = this.root;
-                                    break;
-                                case "..":
-                                    cwd = cwd.parent ?? throw new InvalidOperationException("cannot cd .. beyond /");
-                                    break;
-                                case ".":
-                                    break;
-                                default:
-                                    cwd = cwd.getChild(cmdParts[2].Trim());
-                                    break;
-                            }
+                                "/" => this.root,
+                                ".." => cwd.parent ?? throw new InvalidOperationException("cannot cd .. beyond /"),
+                                _ => cwd.getChild(cmdParts[2].Trim())
+                            };
 
                             break;
 
                         case "ls":
-                            dirDir = cmdParts.Count > 2 ? cwd.getChild(cmdParts[3].Trim()) : null;
+                            cwd.visits++;
                             break;
 
                         default:
@@ -55,16 +46,16 @@ namespace No._07
                 else
                 {
                     string[] dirItemData = row.Split(" ");
-                    if (dirItemData[0] == "dir")
+                    if (dirItemData[0] == "dir") // subdir
                     {
-                        // ?
+                        _ = cwd.getChild(dirItemData[1].Trim());
                     }
                     else
                     {
                         long fileSize = Convert.ToInt64(dirItemData[0].Trim(), CultureInfo.InvariantCulture);
                         if (cwd is null)
                             throw new InvalidOperationException("no cwd to add filesize ??");
-                        (dirDir ?? cwd).addFileSize(fileSize);
+                        cwd.addFileSize(fileSize);
                     }
                 }
             }
@@ -72,5 +63,11 @@ namespace No._07
 
         public long sizeOfDirsWithContentBelow(int maxSizeOfDirContents)
             => this.root.sumSubtreeSizesbelow(maxSizeOfDirContents);
+
+        public long rootDirSize()
+            => this.root.sumFileSize();
+
+        public long findSmallestDirAboveSize(long needToFree)
+            => this.root.findSmallestDirAboveSize(needToFree);
     }
 }

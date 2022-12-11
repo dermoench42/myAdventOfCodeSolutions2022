@@ -1,5 +1,6 @@
 // (c) 2022 QSOFT Development
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,6 +12,7 @@ namespace No._07
         public readonly Dir? parent;
         private long fileSize;
         private readonly List<Dir> children = new();
+        public int visits;
 
         public Dir(string path, Dir? parent = null)
         {
@@ -19,10 +21,16 @@ namespace No._07
         }
 
         public void addFileSize(long fSize)
-            => this.fileSize += fSize;
+        {
+            if (this.visits < 2)
+                this.fileSize += fSize;
+        }
 
-        public long subTreeFileSize()
-            => this.fileSize + this.children.ConvertAll(child => child.subTreeFileSize()).Sum();
+        public long sumFileSize()
+        {
+            long size = this.fileSize + this.children.ConvertAll(child => child.sumFileSize()).Sum();
+            return size;
+        }
 
         public Dir getChild(string childPath)
         {
@@ -37,6 +45,23 @@ namespace No._07
         }
 
         public long sumSubtreeSizesbelow(int maxSizeOfDirContents)
-            => this.children.ConvertAll(child => child.sumSubtreeSizesbelow(maxSizeOfDirContents)).Sum();
+        {
+            long mySize = this.sumFileSize();
+            long sumChildFileSizes = this.children.ConvertAll(child => child.sumSubtreeSizesbelow(maxSizeOfDirContents))
+                .Sum();
+
+            return mySize <= maxSizeOfDirContents ? sumChildFileSizes + mySize : sumChildFileSizes;
+        }
+
+        public long findSmallestDirAboveSize(long needToFree)
+        {
+            long result = this.sumFileSize();
+            if (result < needToFree)
+                return -1;
+
+            return this.children.Select(child => child.findSmallestDirAboveSize(needToFree))
+                .Where(size => size > 0)
+                .Prepend(result).Min();
+        }
     }
 }

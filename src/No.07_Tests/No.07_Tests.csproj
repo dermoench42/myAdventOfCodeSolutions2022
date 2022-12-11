@@ -20,4 +20,10 @@
       <ProjectReference Include="..\No.07\No.07.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="testContent.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

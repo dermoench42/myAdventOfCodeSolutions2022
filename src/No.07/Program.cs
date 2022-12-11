@@ -12,6 +12,20 @@ List<string> data = File.ReadAllText("content.txt")
     .Where(row => !string.IsNullOrWhiteSpace(row))
     .ToList();
 
-long size = new Calculator(data).sizeOfDirsWithContentBelow(100_000);
+Calculator calc = new Calculator(data);
+long size = calc.sizeOfDirsWithContentBelow(100000);
 
 Console.WriteLine($"Size to Remove: {size}");
+
+const long FS_SIZE = 70000000;
+const long NEEDED_FREE_SPACE = 30000000;
+
+long usedSpace = calc.rootDirSize();
+
+long needToFree = usedSpace - (FS_SIZE - NEEDED_FREE_SPACE);
+
+Console.WriteLine($"needTofree: {needToFree}");
+
+long dirSizeToRemove = calc.findSmallestDirAboveSize(needToFree);
+
+Console.WriteLine($"found Dir of Size: {dirSizeToRemove}");
