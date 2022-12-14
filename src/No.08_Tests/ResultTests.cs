@@ -31,5 +31,23 @@ namespace No._08_Tests
             Assert.AreEqual(expected, visibleTrees);
         }
 
+        [DataTestMethod]
+        [DataRow("testContent.txt",8)]
+        [DataRow("testContent0.txt",16)]
+        [DataRow("testContent1.txt",1)]
+        [DataRow("testContent2.txt",2)]
+        [DataRow("testContent3.txt",1)]
+        public void Part2(string fn, int expected)
+        {
+            List<string> data = File.ReadAllText(fn)
+                .Split("\n")
+                .Where(row => !string.IsNullOrWhiteSpace(row))
+                .ToList();
+
+            int maxScenic = Checker.calcMaxScenic(data);
+
+            Assert.AreEqual(expected, maxScenic);
+        }
+
     }
 }

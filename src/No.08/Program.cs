@@ -17,3 +17,7 @@ Checker checker = new Checker(data);
 int visibleTrees = checker.countVisibleTrees();
 
 Console.WriteLine($"found: {visibleTrees} visible Trees,");
+
+int maxScenic = Checker.calcMaxScenic(data);
+
+Console.WriteLine($"maxScneic: {maxScenic}");

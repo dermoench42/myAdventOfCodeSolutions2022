@@ -1,5 +1,6 @@
 // (c) 2022 QSOFT Development
 
+using System;
 using System.Collections.Generic;
 
 namespace No._08
@@ -61,6 +62,59 @@ namespace No._08
             }
 
             return cntVisible;
+        }
+
+        public static int calcMaxScenic(List<string> data)
+        {
+            int cntRows = data.Count;
+            int cntCols = data[0].Length;
+
+            int result = 0;
+
+            for (int row = 1; row < cntRows - 1; row++)
+            {
+                for (int col = 1; col < cntCols - 1; col++)
+                {
+                    int myHeight = data[row][col];
+
+                    int srow = row - 1;
+                    while (srow > 0 && data[srow][col] < myHeight)
+                    {
+                        srow--;
+                    }
+
+                    int top = row - srow;
+
+                    srow = row + 1;
+                    while (srow < cntRows-1 && data[srow][col] < myHeight)
+                    {
+                        srow++;
+                    }
+
+                    int bottom = srow - row;
+
+                    int scol = col - 1;
+                    while (scol > 0 && data[row][scol] < myHeight)
+                    {
+                        scol--;
+                    }
+
+                    int left = col - scol;
+
+                    scol = col + 1;
+                    while (scol < cntCols-1 && data[row][scol] < myHeight)
+                    {
+                        scol++;
+                    }
+
+                    int right = scol - col;
+
+
+                    result = Math.Max(top * bottom * left * right, result);
+                }
+            }
+
+            return result;
         }
     }
 }
