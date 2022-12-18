@@ -8,10 +8,12 @@ namespace No._09
 {
     public static class MovingRope
     {
-        public static int touchedPositions(List<string> moves)
+        public static int touchedPositions(List<string> moves, int cntKnots)
         {
             Viewport viewport = new(moves);
-            Rope rope = new(viewport);
+            Playground playground = new(viewport);
+
+            Rope rope = new(playground, cntKnots);
 
             foreach (string moveDef in moves)
             {
@@ -20,7 +22,9 @@ namespace No._09
 
                 rope.moveHead(direction, countSteps);
             }
-            rope.displayTouchedPos();
+
+            playground.displayPos();
+
             return rope.touchedPositions();
         }
     }

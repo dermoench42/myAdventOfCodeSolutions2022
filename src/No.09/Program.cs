@@ -16,9 +16,14 @@ namespace No._09
                 .Where(row => !string.IsNullOrWhiteSpace(row))
                 .ToList();
 
-            int touchedPositions = MovingRope.touchedPositions(data);
+            int cntKnots = 2;
+            int touchedPositions = MovingRope.touchedPositions(data, cntKnots);
 
-            Console.WriteLine($"Der Schwanz berührte {touchedPositions} Positionen.");
+            Console.WriteLine($"Der Schwanz nach {cntKnots} Knoten berührte {touchedPositions} Positionen.");
+            cntKnots = 10;
+            touchedPositions = MovingRope.touchedPositions(data, cntKnots);
+
+            Console.WriteLine($"Der Schwanz nach {cntKnots} Knoten berührte {touchedPositions} Positionen.");
         }
     }
 }
