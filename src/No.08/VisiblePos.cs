@@ -12,10 +12,8 @@ namespace No._08
 
         public bool checkIncreasing(char height, int pos)
         {
-            if (this.heightPositions.Count > 0
-                && this.heightPositions.Last().height > height)
+            if (this.heightPositions.Count > 0 && this.heightPositions.Last().height > height)
                 return false;
-
 
             this.heightPositions.Add(new HeightPos() { height = height, pos = pos });
             return true;

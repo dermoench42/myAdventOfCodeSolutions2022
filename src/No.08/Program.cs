@@ -12,7 +12,7 @@ List<string> data = File.ReadAllText("content.txt")
     .Where(row => !string.IsNullOrWhiteSpace(row))
     .ToList();
 
-Checker checker = new Checker(data);
+Checker checker = new(data);
 
 int visibleTrees = checker.countVisibleTrees();
 

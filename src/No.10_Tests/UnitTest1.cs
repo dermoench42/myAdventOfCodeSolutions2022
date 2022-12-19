@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,9 +28,9 @@ namespace No._10_Tests
                 { 6, -1 }
             };
 
-            Cpu cpu = new(true);
+            Cpu cpu = new();
 
-            cpu.run(data, expected.Keys.ToList());
+            _ = cpu.run(data, expected.Keys.ToList());
 
             List<CycleData> cycleData = cpu.executionLog;
 

@@ -1,7 +1,5 @@
 // (c) 2022 QSOFT Development
 
-using System;
-using System.Collections.Generic;
 using System.IO;
 
 namespace No._09

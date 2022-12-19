@@ -77,13 +77,17 @@ namespace No._05
                         throw new InvalidExpressionException($"action move expected, {words[0]} found!");
 
                     if (part == 0)
+                    {
                         this.move(Convert.ToInt32(words[1], CultureInfo.CurrentCulture),
                             Convert.ToInt32(words[3], CultureInfo.CurrentCulture),
                             Convert.ToInt32(words[5], CultureInfo.CurrentCulture));
+                    }
                     else
+                    {
                         this.move2(Convert.ToInt32(words[1], CultureInfo.CurrentCulture),
                             Convert.ToInt32(words[3], CultureInfo.CurrentCulture),
                             Convert.ToInt32(words[5], CultureInfo.CurrentCulture));
+                    }
                 });
             return this;
         }
@@ -104,6 +108,7 @@ namespace No._05
             {
                 buffer[idx++] = this.crateStacks[fromStackIdx].Pop();
             }
+
             while (--cntCrates >= 0)
             {
                 this.crateStacks[toStackIdx].Push(buffer[cntCrates]);

@@ -24,7 +24,7 @@ namespace No._08_Tests
                 .Where(row => !string.IsNullOrWhiteSpace(row))
                 .ToList();
 
-            Checker checker = new Checker(data);
+            Checker checker = new(data);
 
             int visibleTrees = checker.countVisibleTrees();
 
@@ -48,6 +48,5 @@ namespace No._08_Tests
 
             Assert.AreEqual(expected, maxScenic);
         }
-
     }
 }

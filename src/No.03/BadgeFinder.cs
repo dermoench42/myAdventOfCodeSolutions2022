@@ -25,8 +25,8 @@ namespace No._03
                     if (found != '\0')
                         break;
 
-                    if (!content[idx + 1].Contains(item)
-                        || !content[idx + 2].Contains(item)) continue;
+                    if (!content[idx + 1].Contains(item) || !content[idx + 2].Contains(item))
+                        continue;
 
                     this.itemsFound.Add(item);
                     found = item;

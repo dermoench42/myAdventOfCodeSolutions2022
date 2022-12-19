@@ -1,7 +1,6 @@
 // (c) 2022 QSOFT Development
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -11,12 +10,7 @@ namespace No._10
 {
     public class Cpu
     {
-        private readonly bool logCycles;
-
         public List<CycleData> executionLog = new();
-
-        public Cpu(bool logCycles = false)
-            => this.logCycles = logCycles;
 
         public int run(List<string> instructions, List<int> evalCycles)
         {
@@ -49,7 +43,6 @@ namespace No._10
 
                 cycle++;
                 leftInstructionCycles--;
-
 
                 if (leftInstructionCycles > 0)
                     continue;
@@ -85,11 +78,11 @@ namespace No._10
             {
                 if (pos >= rowLength)
                 {
-                    msg.AppendLine();
+                    _ = msg.AppendLine();
                     pos = 0;
                 }
 
-                msg.Append(p.X - 1 <= pos && pos <= p.X + 1 ? '#' : '.');
+                _ = msg.Append(p.X - 1 <= pos && pos <= p.X + 1 ? '#' : '.');
                 pos++;
             });
 

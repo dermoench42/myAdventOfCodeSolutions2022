@@ -14,7 +14,7 @@ namespace No._03
         {
             int compartmentLength = content.Length / 2;
 
-            string c0 = content[..(compartmentLength)];
+            string c0 = content[..compartmentLength];
             string c1 = content[compartmentLength..];
 
             foreach (char item in c0.ToArray())

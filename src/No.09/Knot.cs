@@ -1,7 +1,6 @@
 // (c) 2022 QSOFT Development
 
 using System;
-using System.Threading;
 
 namespace No._09
 {
@@ -87,9 +86,7 @@ namespace No._09
             else if (dx == 0)
                 this.stepY(dy - stepy);
             else
-            {
                 this.step(stepx, stepy);
-            }
         }
 
         private void movedY(int step)
@@ -125,14 +122,6 @@ namespace No._09
             int dx = Math.Abs(other.x - this.x);
             int dy = Math.Abs(other.y - this.y);
             return Math.Max(dx, dy);
-        }
-
-        private Knot root()
-        {
-            Knot ret = this;
-            while (ret.previousKnot != null)
-                ret = ret.previousKnot;
-            return ret;
         }
     }
 }

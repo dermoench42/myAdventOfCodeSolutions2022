@@ -1,6 +1,5 @@
 // (c) 2022 QSOFT Development
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -56,10 +55,9 @@ namespace No._07
         public long findSmallestDirAboveSize(long needToFree)
         {
             long result = this.sumFileSize();
-            if (result < needToFree)
-                return -1;
-
-            return this.children.Select(child => child.findSmallestDirAboveSize(needToFree))
+            return result < needToFree
+                ? -1
+                : this.children.Select(child => child.findSmallestDirAboveSize(needToFree))
                 .Where(size => size > 0)
                 .Prepend(result).Min();
         }

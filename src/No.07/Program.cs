@@ -12,7 +12,7 @@ List<string> data = File.ReadAllText("content.txt")
     .Where(row => !string.IsNullOrWhiteSpace(row))
     .ToList();
 
-Calculator calc = new Calculator(data);
+Calculator calc = new(data);
 long size = calc.sizeOfDirsWithContentBelow(100000);
 
 Console.WriteLine($"Size to Remove: {size}");

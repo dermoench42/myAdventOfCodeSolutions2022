@@ -9,7 +9,7 @@ namespace No._09
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             List<string> data = File.ReadAllText("content.txt")
                 .Split("\n")

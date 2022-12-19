@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -22,7 +21,7 @@ namespace No._07_Tests
 
             const int EXPECTED_SIZE = 48381165;
 
-            Calculator calc = new Calculator(data);
+            Calculator calc = new(data);
 
             Assert.AreEqual(EXPECTED_SIZE, calc.rootDirSize());
         }
@@ -37,7 +36,7 @@ namespace No._07_Tests
 
             const int EXPECTED_SIZE = 95437;
 
-            Calculator calc = new Calculator(data);
+            Calculator calc = new(data);
 
             Assert.AreEqual(EXPECTED_SIZE, calc.sizeOfDirsWithContentBelow(100_000));
         }
@@ -52,7 +51,7 @@ namespace No._07_Tests
             const long FS_SIZE = 70000000;
             const long NEEDED_FREE_SPACE = 30000000;
 
-            Calculator calc = new Calculator(data);
+            Calculator calc = new(data);
             long usedSpace = calc.rootDirSize();
 
             long needToFree = usedSpace - (FS_SIZE - NEEDED_FREE_SPACE);

@@ -24,7 +24,7 @@ namespace No._03_Tests
             int sum = 0;
             for (int itemNo = 0; itemNo < this.testContent.Length; itemNo++)
             {
-                int result = (new RucksackContent(this.testContent[itemNo]))
+                int result = new RucksackContent(this.testContent[itemNo])
                     .calcPrio();
                 Assert.AreEqual(this.expected[itemNo], result);
                 sum += result;

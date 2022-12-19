@@ -28,8 +28,8 @@ namespace No._08
             {
                 for (int col = 0; col < cntCols; col++)
                 {
-                    this.rowsFromLeft[row].checkIncreasing(this.data[row][col], col);
-                    this.colsFromTop[col].checkIncreasing(this.data[row][col], row);
+                    _ = this.rowsFromLeft[row].checkIncreasing(this.data[row][col], col);
+                    _ = this.colsFromTop[col].checkIncreasing(this.data[row][col], row);
                 }
             }
 
@@ -37,8 +37,8 @@ namespace No._08
             {
                 for (int col = cntCols - 1; col >= 0; col--)
                 {
-                    this.rowsFromRight[row].checkIncreasing(this.data[row][col], cntCols - col - 1);
-                    this.colsFromBottom[col].checkIncreasing(this.data[row][col], cntRows - row - 1);
+                    _ = this.rowsFromRight[row].checkIncreasing(this.data[row][col], cntCols - col - 1);
+                    _ = this.colsFromBottom[col].checkIncreasing(this.data[row][col], cntRows - row - 1);
                 }
             }
         }
@@ -57,7 +57,9 @@ namespace No._08
                         || this.rowsFromRight[row].isVisible(this.data[row][col], maxCol - col)
                         || this.colsFromTop[col].isVisible(this.data[row][col], row)
                         || this.colsFromBottom[col].isVisible(this.data[row][col], maxRow - row))
+                    {
                         cntVisible++;
+                    }
                 }
             }
 
@@ -108,7 +110,6 @@ namespace No._08
                     }
 
                     int right = scol - col;
-
 
                     result = Math.Max(top * bottom * left * right, result);
                 }
