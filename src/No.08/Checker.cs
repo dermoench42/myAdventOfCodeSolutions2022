@@ -1,4 +1,4 @@
-// (c) 2022 QSOFT Development
+// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 using System;
 using System.Collections.Generic;
@@ -77,44 +77,50 @@ namespace No._08
             {
                 for (int col = 1; col < cntCols - 1; col++)
                 {
-                    int myHeight = data[row][col];
-
-                    int srow = row - 1;
-                    while (srow > 0 && data[srow][col] < myHeight)
-                    {
-                        srow--;
-                    }
-
-                    int top = row - srow;
-
-                    srow = row + 1;
-                    while (srow < cntRows-1 && data[srow][col] < myHeight)
-                    {
-                        srow++;
-                    }
-
-                    int bottom = srow - row;
-
-                    int scol = col - 1;
-                    while (scol > 0 && data[row][scol] < myHeight)
-                    {
-                        scol--;
-                    }
-
-                    int left = col - scol;
-
-                    scol = col + 1;
-                    while (scol < cntCols-1 && data[row][scol] < myHeight)
-                    {
-                        scol++;
-                    }
-
-                    int right = scol - col;
-
-                    result = Math.Max(top * bottom * left * right, result);
+                    result = calcScenicForElement(data, cntCols, row, cntRows, result, col);
                 }
             }
 
+            return result;
+        }
+
+        private static int calcScenicForElement(IReadOnlyList<string> data, int cntCols, int row, int cntRows, int result, int col)
+        {
+            int myHeight = data[row][col];
+
+            int srow = row - 1;
+            while (srow > 0 && data[srow][col] < myHeight)
+            {
+                srow--;
+            }
+
+            int top = row - srow;
+
+            srow = row + 1;
+            while (srow < cntRows - 1 && data[srow][col] < myHeight)
+            {
+                srow++;
+            }
+
+            int bottom = srow - row;
+
+            int scol = col - 1;
+            while (scol > 0 && data[row][scol] < myHeight)
+            {
+                scol--;
+            }
+
+            int left = col - scol;
+
+            scol = col + 1;
+            while (scol < cntCols - 1 && data[row][scol] < myHeight)
+            {
+                scol++;
+            }
+
+            int right = scol - col;
+
+            result = Math.Max(top * bottom * left * right, result);
             return result;
         }
     }

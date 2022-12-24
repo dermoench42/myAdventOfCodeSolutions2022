@@ -1,4 +1,4 @@
-// (c) 2022 QSOFT Development
+// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 using System.IO;
 
@@ -14,7 +14,7 @@ namespace No._09
             this.playground = playground;
             this.head = new('H', playground, null);
             _ = new Knot('T', playground, this.head);
-            this.playground.touch(0,0,'0');
+            this.playground.touch(0, 0, '0');
             cntKnots -= 2;
             for (int idx = cntKnots; idx > 0; idx--)
             {
@@ -41,8 +41,6 @@ namespace No._09
                 default:
                     throw new InvalidDataException();
             }
-            /*Console.WriteLine($"{direction} {countSteps}");
-            this.playground.displayRope(this.head);*/
         }
 
         public int touchedPositions()

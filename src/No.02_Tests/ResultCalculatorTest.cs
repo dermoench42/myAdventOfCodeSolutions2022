@@ -1,3 +1,7 @@
+// (c) 2022 Ervin Peters (coder@ervnet.de)
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using No._2;
 
 namespace No._02_Tests
@@ -6,24 +10,17 @@ namespace No._02_Tests
     public class ResultCalculatorTest
     {
         readonly Dictionary<string, Chosen> opponentsChoices = new()
-            {
-                { "A", Chosen.Rock },
-                { "B", Chosen.Paper },
-                { "C", Chosen.Scissor }
-            };
+        {
+            { "A", Chosen.Rock }, { "B", Chosen.Paper }, { "C", Chosen.Scissor }
+        };
 
         readonly Dictionary<string, Chosen> myChoices = new()
-            {
-                { "X", Chosen.Rock },
-                { "Y", Chosen.Paper },
-                { "Z", Chosen.Scissor }
-            };
+        {
+            { "X", Chosen.Rock }, { "Y", Chosen.Paper }, { "Z", Chosen.Scissor }
+        };
 
-        readonly Dictionary<string, WinState> wantedResultState = new() {
-                { "X", WinState.loose },
-                { "Y", WinState.draw },
-                { "Z", WinState.win }
-            };
+        readonly Dictionary<string, WinState> wantedResultState =
+            new() { { "X", WinState.Loose }, { "Y", WinState.Draw }, { "Z", WinState.Win } };
 
         [TestMethod]
         public void returns_zero_onEmptyData()

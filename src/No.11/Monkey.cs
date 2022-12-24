@@ -1,4 +1,4 @@
-// (c) 2022 QSOFT Development
+// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace No._11
     public class Monkey
     {
         private readonly List<Monkey> monkeys;
-        public readonly ulong id;
+        private readonly ulong id;
         public readonly List<ulong> worryLevelOfItems;
         public string wOperator = "";
         public ulong wOperand;
@@ -88,7 +88,6 @@ namespace No._11
         {
             this.worryLevelOfItems.ForEach(item =>
             {
-                //Console.Write($"    {item} ");
                 item = this.worryLevelOperation(item, wdiv);
 
                 Monkey destinationMonkey = (this.isDivisible(item)
@@ -98,8 +97,6 @@ namespace No._11
                 destinationMonkey
                     .worryLevelOfItems
                     .Add(item);
-
-                //Console.WriteLine($"-> {item} ({item % this.testDivisor}) moved from {this.id} to {destinationMonkey.id}");
 
                 this.cntInspected++;
             });

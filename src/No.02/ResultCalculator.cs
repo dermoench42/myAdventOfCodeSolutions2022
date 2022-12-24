@@ -1,8 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 namespace No._2
 {
-    public class ResultCalculator
+    public static class ResultCalculator
     {
         public static int calc(string data,
                                Dictionary<string, Chosen> opponentsChoices,

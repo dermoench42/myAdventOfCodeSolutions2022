@@ -1,3 +1,5 @@
+// (c) 2022 Ervin Peters (coder@ervnet.de)
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using No._06;

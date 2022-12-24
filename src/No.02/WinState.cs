@@ -1,11 +1,11 @@
-﻿// (c) 2022 QSOFT Development
+﻿// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 namespace No._2
 {
     public enum WinState
     {
-        draw = 3,
-        loose = 0,
-        win = 6
+        Draw = 3,
+        Loose = 0,
+        Win = 6
     }
 }

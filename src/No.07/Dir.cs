@@ -1,4 +1,4 @@
-// (c) 2022 QSOFT Development
+// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 using System.Collections.Generic;
 using System.Linq;
@@ -58,8 +58,8 @@ namespace No._07
             return result < needToFree
                 ? -1
                 : this.children.Select(child => child.findSmallestDirAboveSize(needToFree))
-                .Where(size => size > 0)
-                .Prepend(result).Min();
+                    .Where(size => size > 0)
+                    .Prepend(result).Min();
         }
     }
 }

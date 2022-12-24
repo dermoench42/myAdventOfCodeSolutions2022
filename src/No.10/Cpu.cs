@@ -1,4 +1,4 @@
-// (c) 2022 QSOFT Development
+// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 using System;
 using System.Collections.Generic;
@@ -10,11 +10,11 @@ namespace No._10
 {
     public class Cpu
     {
-        public List<CycleData> executionLog = new();
+        public readonly List<CycleData> executionLog = new();
 
         public int run(List<string> instructions, List<int> evalCycles)
         {
-            if (instructions?.Count == 0)
+            if (instructions.Count == 0)
                 return 0;
 
             int x = 1;
@@ -23,7 +23,7 @@ namespace No._10
             int leftInstructionCycles = 0;
             string opCode = "";
             string currentInstruction = "";
-            while (instructionCounter < instructions!.Count)
+            while (instructionCounter < instructions.Count)
             {
                 if (leftInstructionCycles == 0)
                 {
@@ -60,23 +60,21 @@ namespace No._10
         }
 
         public Dictionary<int, int> partResults(List<int> evalCycles)
-        {
-            return new Dictionary<int, int>(this.executionLog
+            => new Dictionary<int, int>(this.executionLog
                 .Where(item => evalCycles.Contains(item.cycle))
                 .ToList()
                 .ConvertAll(item => new KeyValuePair<int, int>(item.cycle, item.cycle * item.X))
             );
-        }
 
         public string display()
         {
             StringBuilder msg = new();
-            int rowLength = 40;
+            const int ROW_LENGTH = 40;
             int pos = 0;
 
             this.executionLog.ForEach(p =>
             {
-                if (pos >= rowLength)
+                if (pos >= ROW_LENGTH)
                 {
                     _ = msg.AppendLine();
                     pos = 0;

@@ -1,14 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 using System.Globalization;
 
-const string fn = "data.txt";
+const string FILE_NAME = "data.txt";
 
-Console.WriteLine(File.ReadAllText(fn)
+Console.WriteLine(File.ReadAllText(FILE_NAME)
     .Split("\n\n")
     .ToList()
-    .ConvertAll(item
-        => item.Split("\n")
+    .ConvertAll(block
+        => block.Split("\n")
             .ToList()
             .ConvertAll(item => string.IsNullOrWhiteSpace(item) ? 0 : Convert.ToInt64(item, CultureInfo.InvariantCulture))
             .Aggregate((s, sum) => sum += s))

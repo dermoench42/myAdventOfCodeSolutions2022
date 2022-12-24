@@ -1,4 +1,4 @@
-// (c) 2022 QSOFT Development
+// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 using System;
 using System.Collections.Generic;
@@ -9,8 +9,8 @@ namespace No._09
 {
     public class Viewport
     {
-        public readonly int xMax;
-        public readonly int yMax;
+        private readonly int xMax;
+        private readonly int yMax;
         public readonly int xMin;
         public readonly int yMin;
 

@@ -1,4 +1,4 @@
-// (c) 2022 QSOFT Development
+// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 using System.Collections.Generic;
 using System.IO;
@@ -146,6 +146,7 @@ namespace No._09_Tests
 
             Assert.AreEqual(expected, touchedPositions);
         }
+
         [DataTestMethod]
         [DataRow("L 1", "U 1", 1)]
         [DataRow("L 1", "D 1", 1)]

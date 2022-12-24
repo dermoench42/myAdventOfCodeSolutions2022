@@ -1,4 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 using System;
 using System.Collections.Generic;

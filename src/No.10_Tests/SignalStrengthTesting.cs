@@ -1,3 +1,6 @@
+// (c) 2022 Ervin Peters (coder@ervnet.de)
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -36,7 +39,7 @@ namespace No._10_Tests
 
             foreach (int key in expected.Keys)
             {
-                CycleData? result = cycleData.Where(d => d.cycle == key).FirstOrDefault();
+                CycleData? result = cycleData.FirstOrDefault(d => d.cycle == key);
                 Assert.NotNull(result);
                 Assert.Equal(expected[key], result!.X);
             }
@@ -109,6 +112,7 @@ namespace No._10_Tests
 
             Assert.Equal(EXPECTED_SUM, result);
 
+            //
             string d = @"##..##..##..##..##..##..##..##..##..##..
 ###...###...###...###...###...###...###.
 ####....####....####....####....####....
@@ -117,7 +121,7 @@ namespace No._10_Tests
 #######.......#######.......#######.....
 .";
 
-            Assert.Equal(d.Replace("\r\n","\n"), cpu.display());
+            Assert.Equal(d.Replace("\r\n", Environment.NewLine), cpu.display());
         }
     }
 }

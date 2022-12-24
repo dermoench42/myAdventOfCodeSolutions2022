@@ -1,4 +1,4 @@
-// (c) 2022 QSOFT Development
+// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace No._03
     {
         private readonly List<char> itemsFound = new();
 
-        public BadgeFinder(List<string> content)
+        public BadgeFinder(IReadOnlyList<string> content)
         {
             if (content.Count % 3 > 0)
                 throw new InvalidOperationException($"Count Lines error (mod 3 => {content.Count % 3})");

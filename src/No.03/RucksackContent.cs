@@ -1,4 +1,4 @@
-// (c) 2022 QSOFT Development
+// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +32,7 @@ namespace No._03
         public int calcPrio()
             => this.itemsFound
                 .Sum(item => item >= 'a'
-                                    ? item - 'a' + 1
-                                    : item - 'A' + 27);
+                    ? item - 'a' + 1
+                    : item - 'A' + 27);
     }
 }

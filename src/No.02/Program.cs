@@ -1,8 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 namespace No._2
 {
-    internal class Program
+    internal static class Program
     {
         private static void Main()
         {
@@ -27,9 +27,9 @@ namespace No._2
             // part2
 
             Dictionary<string, WinState> wantedResultState = new() {
-                { "X", WinState.loose },
-                { "Y", WinState.draw },
-                { "Z", WinState.win }
+                { "X", WinState.Loose },
+                { "Y", WinState.Draw },
+                { "Z", WinState.Win }
             };
 
             Console.WriteLine($"result Part2: {ResultCalculator.calcpart2(data, opponentsChoices, wantedResultState)}");

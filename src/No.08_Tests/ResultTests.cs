@@ -1,3 +1,5 @@
+// (c) 2022 Ervin Peters (coder@ervnet.de)
+
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,12 +14,12 @@ namespace No._08_Tests
     public class ResultTests
     {
         [DataTestMethod]
-        [DataRow("testContent.txt",21)]
-        [DataRow("testContent0.txt",25)]
-        [DataRow("testContent1.txt",16)]
-        [DataRow("testContent2.txt",24)]
-        [DataRow("testContent3.txt",24)]
-        public void Part1( string fn, int expected)
+        [DataRow("testContent.txt", 21)]
+        [DataRow("testContent0.txt", 25)]
+        [DataRow("testContent1.txt", 16)]
+        [DataRow("testContent2.txt", 24)]
+        [DataRow("testContent3.txt", 24)]
+        public void part1(string fn, int expected)
         {
             List<string> data = File.ReadAllText(fn)
                 .Split("\n")
@@ -32,12 +34,12 @@ namespace No._08_Tests
         }
 
         [DataTestMethod]
-        [DataRow("testContent.txt",8)]
-        [DataRow("testContent0.txt",16)]
-        [DataRow("testContent1.txt",1)]
-        [DataRow("testContent2.txt",2)]
-        [DataRow("testContent3.txt",1)]
-        public void Part2(string fn, int expected)
+        [DataRow("testContent.txt", 8)]
+        [DataRow("testContent0.txt", 16)]
+        [DataRow("testContent1.txt", 1)]
+        [DataRow("testContent2.txt", 2)]
+        [DataRow("testContent3.txt", 1)]
+        public void part2(string fn, int expected)
         {
             List<string> data = File.ReadAllText(fn)
                 .Split("\n")

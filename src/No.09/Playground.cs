@@ -1,4 +1,4 @@
-// (c) 2022 QSOFT Development
+// (c) 2022 Ervin Peters (coder@ervnet.de)
 
 using System;
 
@@ -52,7 +52,7 @@ namespace No._09
         public void displayRope(Knot? knot)
         {
             char[,] ropes = new char[this.sizeX, this.sizeY];
-            ropes[- this.dx, - this.dy] = 's';
+            ropes[-this.dx, -this.dy] = 's';
             while (knot != null)
             {
                 ropes[knot.x - this.dx, knot.y - this.dy] = knot.id;

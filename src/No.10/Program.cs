@@ -1,4 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// (c) 2022 Ervin Peters (coder@ervnet.de)
+// See https://aka.ms/new-console-template for more information
 
 using System;
 using System.Collections.Generic;
@@ -6,8 +7,6 @@ using System.IO;
 using System.Linq;
 
 using No._10;
-
-// 20th, 60th, 100th, 140th, 180th, and 220th
 
 List<string> instructions = File.ReadAllText("content.txt")
     .Split("\n")
