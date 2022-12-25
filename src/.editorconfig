@@ -20,7 +20,7 @@ insert_final_newline = false
 # Using-Direktiven organisieren
 dotnet_separate_import_directive_groups = true
 dotnet_sort_system_directives_first = true
-file_header_template = (c) 2022 QSOFT Development
+file_header_template = (c) 2022 Ervin Peters (coder@ervnet.de)
 
 # this.- und Me.-Einstellungen
 dotnet_style_qualification_for_event = true:suggestion
@@ -186,13 +186,13 @@ dotnet_naming_rule.interface_should_be_begins_with_i.style = begins_with_i
 
 dotnet_naming_symbols.interface.applicable_kinds = interface
 dotnet_naming_symbols.interface.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
-dotnet_naming_symbols.interface.required_modifiers = 
+dotnet_naming_symbols.interface.required_modifiers =
 
 # Benennungsstile
 
 dotnet_naming_style.begins_with_i.required_prefix = I
-dotnet_naming_style.begins_with_i.required_suffix = 
-dotnet_naming_style.begins_with_i.word_separator = 
+dotnet_naming_style.begins_with_i.required_suffix =
+dotnet_naming_style.begins_with_i.word_separator =
 dotnet_naming_style.begins_with_i.capitalization = pascal_case
 
 # IDE0005: Using-Direktive ist unnötig.
