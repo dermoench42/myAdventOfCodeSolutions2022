@@ -5,7 +5,7 @@ using System.IO;
 
 namespace No._12
 {
-    public class RasterMap
+    public class MazePart1
     {
         private readonly string[] topoData;
         private Position? start;
@@ -16,16 +16,16 @@ namespace No._12
         private readonly Queue<Position> toExplore = new();
 
 
-        public RasterMap(string[] topoData)
+        public MazePart1(string[] topoData)
         {
             this.topoData = topoData;
             this.width = topoData[0].Length;
             this.height = topoData.Length;
             this.map = new Position[this.width, this.height];
-            this.createMapWithStartAndZiel();
+            this.createMitStartUndZiel();
         }
 
-        private void createMapWithStartAndZiel()
+        private void createMitStartUndZiel()
         {
             for (uint rowIdx = 0; rowIdx < this.height; rowIdx++)
             {
@@ -77,6 +77,7 @@ namespace No._12
                 case 'S':
                     this.start = position;
                     position.distance = 0;
+                    position.touched = true;
                     position.height = 'a';
                     break;
                 case 'E':

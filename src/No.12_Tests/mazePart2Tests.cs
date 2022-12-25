@@ -9,7 +9,7 @@ namespace No._12_Tests
 {
     using Xunit;
 
-    public class PathFinderTests
+    public class MazePart2Tests
     {
         [Fact]
         public void findTestPathSteps()
@@ -18,11 +18,11 @@ namespace No._12_Tests
                 .Split("\n")
                 .Where(row => !string.IsNullOrWhiteSpace(row)).ToArray();
 
-            RasterMap rasterMap = new(topoData);
+            MazePart2 mazePart2 = new(topoData);
 
-            uint result = rasterMap.findPath();
+            uint result = mazePart2.findPath();
 
-            Assert.Equal(31u, result);
+            Assert.Equal(29u, result);
         }
     }
 }
