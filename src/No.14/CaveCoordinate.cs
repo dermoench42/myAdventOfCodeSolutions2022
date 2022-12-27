@@ -8,23 +8,24 @@ namespace No._14
     {
         public int x;
         public int y;
-        private ViewPort viewport;
+        private readonly ViewPort viewPort;
 
-        public int tx => this.x - this.viewport.minX;
-        public int ty => this.y - this.viewport.minY;
+        public int tx => this.x - this.viewPort.minX;
+        public int ty => this.y - this.viewPort.minY;
 
-        private CaveCoordinate() { }
+        private CaveCoordinate(ViewPort viewPort)
+            => this.viewPort = viewPort;
 
-        public CaveCoordinate(int x, int y, ViewPort viewport)
+        public CaveCoordinate(int x, int y, ViewPort viewPort)
         {
-            this.viewport = viewport;
+            this.viewPort = viewPort;
             this.x = x;
             this.y = y;
         }
 
-        public CaveCoordinate(List<int> coList, ViewPort viewport)
+        public CaveCoordinate(IReadOnlyList<int> coList, ViewPort viewPort)
         {
-            this.viewport = viewport;
+            this.viewPort = viewPort;
             this.x = coList[0];
             this.y = coList[1];
         }
@@ -34,6 +35,6 @@ namespace No._14
             => (other.x - this.x, other.y - this.y);
 
         public CaveCoordinate clone(int dx = 0, int dy = 0)
-            => new() { x = this.x + dx, y = this.y + dy, viewport = this.viewport };
+            => new(this.viewPort) { x = this.x + dx, y = this.y + dy};
     }
 }

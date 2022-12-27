@@ -12,18 +12,16 @@ namespace No._14
         private readonly List<CaveCoordinate> coordinates;
 
         public PathOfRock(string path, ViewPort viewport)
-        {
-            this.coordinates = path.Split(" -> ")
+            => this.coordinates = path.Split(" -> ")
                 .ToList()
                 .ConvertAll(coItem => viewport
                     .createCoordinate(coItem.Split(',')
-                    .ToList()
-                    .ConvertAll(c => Convert.ToInt32(c, CultureInfo.InvariantCulture))));
-        }
+                        .ToList()
+                        .ConvertAll(c => Convert.ToInt32(c, CultureInfo.InvariantCulture))));
 
         public void drawPath(char[,] tiles)
         {
-            CaveCoordinate prevPos = null;
+            CaveCoordinate? prevPos = null;
             foreach (CaveCoordinate pos in this.coordinates)
             {
                 if (prevPos != null)
