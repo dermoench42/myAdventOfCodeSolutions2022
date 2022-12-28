@@ -3,7 +3,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 
 using No._15;
 
@@ -27,8 +26,8 @@ namespace No._15_Tests
 
         [Theory]
         [InlineData("testSensorData.txt", 20, 56000011)]
-        [InlineData("sensorData.txt", 4000000, 0)]
-        public void endresultPart2(string fileName, int size, int expected)
+        [InlineData("sensorData.txt", 4000000, 12525726647448)]
+        public void endresultPart2(string fileName, int size, long expected)
         {
             Area area = new(File.ReadLines(fileName).ToList());
 
@@ -36,6 +35,7 @@ namespace No._15_Tests
 
             Assert.Equal(expected, cntPositions);
         }
+
         [Theory]
         [InlineData("Sensor at x=2, y=18: closest beacon is at x=-2, y=15", "", 2, 18, -2, 15, 7)]
         [InlineData("Sensor at x=8, y=7: closest beacon is at x=2, y=10", "", 8, 7, 2, 10, 9)]

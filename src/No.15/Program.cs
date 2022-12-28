@@ -18,3 +18,9 @@ area = new(File.ReadLines("sensorData.txt").ToList());
 cntPositions = area.cntPositionsWithNoBeacon(2000000);
 
 Console.WriteLine($"Part1: {cntPositions}");
+
+area = new(File.ReadLines("sensorData.txt").ToList());
+
+long freq = area.calcFrequency(4000000);
+
+Console.WriteLine($"Part2: {freq}");
