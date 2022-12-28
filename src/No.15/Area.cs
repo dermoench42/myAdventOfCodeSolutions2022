@@ -8,51 +8,47 @@ namespace No._15
 {
     public class Area
     {
-        private readonly List<SensorBeacon> sensorBeacons;
+        public readonly List<SensorBeacon> sensorBeacons;
 
         public Area(List<string> lines)
             => this.sensorBeacons = lines
+                .Where(line => !string.IsNullOrWhiteSpace(line))
+                .ToList()
                 .ConvertAll(line => new SensorBeacon(line[10..]
-                .Replace(" closest beacon is at ", ""))
-            );
+                    .Replace(" closest beacon is at ", ""))
+                );
+
 
         public long cntPositionsWithNoBeacon(long yRow)
         {
             long result = 0;
             _ = this.sensorBeacons
-                .ConvertAll(sb => sb.intersectionWithRow(yRow))
-                .Where(inSe => inSe.dx > 0)
-                .OrderBy(inSe => inSe.x)
+                .Where(sb => sb.manhattenRadius >= Math.Abs(yRow - sb.sensorPosition.y))
                 .ToList()
-                .Aggregate(long.MinValue, (lpos, inSe) =>
-                {
-                    {
-                        result += inSe.x + inSe.dx - Math.Max(lpos, inSe.x - inSe.dx);
-                        return inSe.x + inSe.dx;
-                    }
-                });
-            return result;
-        }
-    }
-
-    public class SensorBeacon
-    {
-        private readonly Position sensorPosition;
-        private readonly Position beaconPosition;
-        private readonly long manhattenRadius;
-
-        public SensorBeacon(string reducedData)
-        {
-            List<string> dataParts = reducedData.Split((':')).ToList();
-            this.sensorPosition = new Position(dataParts[0]);
-            this.beaconPosition = new Position(dataParts[1]);
-            this.manhattenRadius = this.sensorPosition.manhattenDistance(this.beaconPosition);
+                .ConvertAll(sb => sb.intersectionWithRow(yRow))
+                .Where(inSe => inSe.dx >= 0)
+                .OrderBy(inSe => inSe.firstX)
+                .ToList()
+                .Aggregate(long.MinValue, (lpos, inSe) => addPosition(lpos, ref result, inSe));
+            return result - this.sensorBeacons.Where(sb => sb.beaconPosition.y == yRow).GroupBy(sb => sb.beaconPosition.x).Count();
         }
 
-        public (long x, long dx) intersectionWithRow(long yRow)
+        public static long addPosition(long firstFreePosition, ref long cntPositions, (long firstX, long dx, long lastX) inSe)
         {
-            long dx = this.manhattenRadius - Math.Abs(yRow - this.sensorPosition.y);
-            return (this.sensorPosition.x, dx);
+            long cntNewPositions = inSe.lastX + 1 - Math.Max(firstFreePosition, inSe.firstX);
+            cntPositions += Math.Max(0, cntNewPositions);
+            return Math.Max(firstFreePosition, inSe.lastX + 1);
+        }
+
+        public long calcFrequency(long size)
+        {
+            Position beacon = this.findBeaconPos(size);
+            return (beacon.x * 4000000 + beacon.y);
+        }
+
+        private Position findBeaconPos(long size)
+        {
+            return new Position(0, 0);
         }
     }
 }

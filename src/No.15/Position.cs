@@ -13,7 +13,9 @@ namespace No._15
 
         public Position(string input)
         {
-            long[] coords = input.Trim().Split(", ").ToList()
+            long[] coords = input.Trim()
+                .Split(", ")
+                .ToList()
                 .ConvertAll(a => Convert.ToInt64(a.Split("=")[1], CultureInfo.InvariantCulture))
                 .ToArray();
             this.x = coords[0];

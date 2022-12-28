@@ -15,6 +15,6 @@ Console.WriteLine($"testData: {cntPositions} (26)");
 
 area = new(File.ReadLines("sensorData.txt").ToList());
 
-cntPositions = area.cntPositionsWithNoBeacon(10);
+cntPositions = area.cntPositionsWithNoBeacon(2000000);
 
 Console.WriteLine($"Part1: {cntPositions}");
